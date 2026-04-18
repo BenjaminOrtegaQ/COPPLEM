@@ -1,0 +1,355 @@
+
+.sales-wrap{
+  --card-radius:12px;
+  --card-border:#ece7e2;
+  --card-shadow:0 6px 20px rgba(16,24,40,.05);
+  --brand:#D07A43;
+  --ink:#111827;
+  --muted:#6b7280;
+  --surface:#fff;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 16px 18px 24px;
+  color: var(--ink);
+}
+.sales-wrap .muted{ color: var(--muted); }
+.sales-wrap .tiny{ font-size: 12px; }
+
+
+.sales-wrap .card{
+  background:var(--surface);
+  border:1px solid var(--card-border);
+  border-radius:var(--card-radius);
+  box-shadow:var(--card-shadow);
+  padding:14px;
+}
+
+
+.sales-wrap .toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; margin-bottom:10px; flex-wrap:wrap;
+}
+.sales-wrap .search{ position:relative; min-width: 260px; flex:1; }
+.sales-wrap .search input{
+  width:100%; padding:10px 12px;
+  border:1px solid #e5e7eb; border-radius:8px;
+  font-size:14px; outline: none;
+}
+.sales-wrap .search input:focus{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+}
+.sales-wrap .toolbar input[type="date"]{
+  padding:8px 10px; border:1px solid #e5e7eb; border-radius:8px;
+}
+.sales-wrap .toolbar button{
+  padding:8px 12px; border-radius:8px; border:1px solid #e5e7eb; background:#fff;
+  cursor:pointer;
+}
+.sales-wrap .toolbar button:hover{ background:#f9fafb; }
+
+
+.sales-wrap .table-wrap{ width:100%; overflow:auto; border-radius:10px; border:1px solid #eee; }
+.sales-wrap .grid{
+  width:100%; border-collapse:separate; border-spacing:0; min-width:800px;
+}
+.sales-wrap .grid thead th{
+  position:sticky; top:0; z-index:1;
+  background:#e2854b; color:#ffffff; font-weight:700;
+  font-size:13px; padding:10px 12px;
+  text-align: left;                 
+  border-bottom:1px solid #eee;
+}
+.sales-wrap .grid tbody td{
+  padding:10px 12px; border-bottom:1px dashed #eee;
+  text-align: left;                 
+  vertical-align: middle;
+}
+.sales-wrap .grid thead th:first-child,
+.sales-wrap .grid tbody td:first-child { border-left:0; }
+.sales-wrap .grid thead th:last-child,
+.sales-wrap .grid tbody td:last-child  { border-right:0; }
+
+
+.sales-wrap .grid tbody tr{
+  transition: background .12s ease, transform .06s ease;
+  cursor: default;
+}
+.sales-wrap .grid tbody tr[style*="cursor:\"pointer\""],
+.sales-wrap .grid tbody tr[data-clickable="true"]{
+  cursor: pointer;
+}
+.sales-wrap .grid tbody tr:hover{
+  background:#fffaf6;
+}
+.sales-wrap .grid tbody tr:active{
+  transform: translateY(1px);
+}
+
+
+.sales-wrap .grid thead th:nth-child(1),
+.sales-wrap .grid tbody td:nth-child(1){ text-align:left;}
+.sales-wrap .grid thead th:nth-child(3),
+.sales-wrap .grid tbody td:nth-child(3){ text-align:left; }
+
+
+.sales-wrap .grid tbody td:nth-child(3){
+  max-width: 0; 
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+
+.sales-wrap .grid tbody td:last-child{ font-weight:700; }
+
+
+.sales-wrap .card > .tiny.muted{
+  margin-top:8px;
+}
+
+
+.sales-wrap .modal{
+  position: fixed; inset:0; z-index: 1000;
+  background: rgba(17,24,39,.35);
+  display:grid; place-items:center;
+}
+.sales-wrap .modal-card{
+  min-width: 1000px;
+  max-height: 90vh; overflow:auto;
+  background:#fff; border:1px solid #e5e7eb; border-radius:12px;
+  padding:14px; box-shadow:0 14px 40px rgba(0,0,0,.2);
+}
+.sales-wrap .modal-head{
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;
+}
+.sales-wrap .modal-head .icon{
+  width:28px; height:28px; display:grid; place-items:center;
+  border:1px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer;
+}
+.sales-wrap .modal-head .icon:hover{ background:#f9fafb; }
+
+
+@media (max-width: 960px){
+  .sales-wrap .toolbar{ gap:8px; }
+  .sales-wrap .table-wrap{ border-radius:8px; }
+  .sales-wrap .grid{ min-width: 700px; }
+}
+
+
+.sales-wrap .grid.detail{
+  table-layout: fixed;          
+  min-width: 0;                 
+}
+
+
+.sales-wrap .grid.detail th:nth-child(1),
+.sales-wrap .grid.detail td:nth-child(1){
+  width: 20%;
+  text-align: left;             
+  max-width: 0;                 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.sales-wrap .grid.detail th:nth-child(2),
+.sales-wrap .grid.detail td:nth-child(2){
+  width: 10%;
+  text-align: left;             
+}
+
+
+.sales-wrap .grid.detail th:nth-child(3),
+.sales-wrap .grid.detail td:nth-child(3){
+  width: 14%;
+  text-align: left;             
+}
+
+
+.sales-wrap .grid.detail th:nth-child(4),
+.sales-wrap .grid.detail td:nth-child(4){
+  width: 10%;
+  text-align: left;             
+}
+
+
+.sales-wrap .grid.detail th:nth-child(5),
+.sales-wrap .grid.detail td:nth-child(5){
+  width: 14%;
+  text-align: left;             
+  font-weight: 700;
+}
+
+
+.sales-wrap{
+  --col-fecha:       22%;
+  --col-correl:      20%;
+  --col-cliente:     14%;
+  --col-metodo:      12%;
+  --col-items:        10%;
+  --col-total:        8%;
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail){
+  table-layout: fixed;
+  min-width: 860px;            
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(1),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(1){
+  width: var(--col-fecha);
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(2),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(2){
+  width: var(--col-correl);
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(3),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(3){
+  width: var(--col-cliente);
+  max-width: 0;                
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(4),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(4){
+  width: var(--col-metodo);
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(5),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(5){
+  width: var(--col-items);
+  text-align: center;
+  
+}
+
+
+.sales-wrap .table-wrap > .grid:not(.detail) th:nth-child(6),
+.sales-wrap .table-wrap > .grid:not(.detail) td:nth-child(6){
+  width: var(--col-total);
+  font-weight: 700;            
+  text-align: center;
+}
+
+
+.sales-wrap .grid.detail{ table-layout: fixed; }
+
+
+.sales-wrap .grid.detail td.td-name{ max-width: 0; }
+
+
+.sales-wrap .grid.detail td.td-name .ellipsis{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sales-wrap .grid tbody td{
+  padding: 14px 12px; 
+}
+
+.pager{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pager-center{ display: inline-flex; align-items: center; gap: 8px; }
+.pager .pages{ display: inline-flex; gap: 6px; }
+
+.pager .nav-btn,
+.pager .page-btn{
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+.pager .page-btn.active{
+  background: var(--primary, #ea6a21);
+  color: #fff;
+  border-color: var(--primary, #ea6a21);
+  font-weight: 600;
+}
+.pager .nav-btn:disabled,
+.pager .page-btn:disabled{
+  opacity: .5;
+  cursor: default;
+}
+
+.pager-right select{
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px){
+  .pager{ justify-content: center; }
+  .pager-left{ display: none; }
+}
+
+.pager{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pager-center{ display: inline-flex; align-items: center; gap: 8px; }
+.pager .pages{ display: inline-flex; gap: 6px; }
+
+.pager .nav-btn,
+.pager .page-btn{
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+.pager .page-btn.active{
+  background: var(--primary, #ea6a21);
+  color: #fff;
+  border-color: var(--primary, #ea6a21);
+  font-weight: 600;
+}
+.pager .nav-btn:disabled,
+.pager .page-btn:disabled{
+  opacity: .5;
+  cursor: default;
+}
+
+.pager-right select{
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px){
+  .pager{ justify-content: center; }
+  .pager-left{ display: none; }
+}

@@ -1,0 +1,132 @@
+{
+  "name": "copplem",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Sistema de Control y Organización de Negocios",
+  "author": "COPPLEM",
+  "type": "commonjs",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "//1": "=== DEV ===",
+    "dev:renderer": "vite",
+    "dev:main": "tsc -p electron/tsconfig.json -w",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev": "concurrently -k -n RND,MAIN,EL \"pnpm:dev:renderer\" \"pnpm:dev:main\" \"pnpm:dev:electron\"",
+    "//2": "=== BUILD (sin instalador) ===",
+    "build:renderer": "vite build",
+    "build:main": "tsc -p electron/tsconfig.json",
+    "build": "pnpm build:renderer && pnpm build:main",
+    "//3": "=== PACKAGING / INSTALADOR ===",
+    "pack": "pnpm build && pnpm rebuild:native && electron-builder --dir",
+    "dist": "pnpm build && pnpm rebuild:native && electron-builder",
+    "//4": "=== NATIVOS (better-sqlite3) ===",
+    "postinstall": "electron-builder install-app-deps",
+    "rebuild:native": "electron-rebuild -v 38.2.1 -f -w better-sqlite3"
+  },
+  "build": {
+    "appId": "com.copplem.app",
+    "productName": "COPPLEM",
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/",
+        "to": "resources/"
+      },
+      {
+        "from": "resources/template.sql",
+        "to": "template.sql"
+      },
+      {
+        "from": "resources/plantillas",
+        "to": "plantillas",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "src/assets/logo.svg",
+        "to": "assets/logo.svg",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "resources/assets/app-256.png",
+        "to": "assets/app-256.png"
+      },
+      {
+        "from": "node_modules/jimp/fonts/open-sans",
+        "to": "jimp-fonts/open-sans",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node",
+      "**/better-sqlite3/**",
+      "**/bindings/**"
+    ],
+    "npmRebuild": false,
+    "win": {
+      "icon": "resources/assets/app.ico",
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "COPPLEM-${version}-win.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "COPPLEM",
+      "deleteAppDataOnUninstall": true,
+      "uninstallDisplayName": "Desinstalar COPPLEM",
+      "allowElevation": true,
+      "installerIcon": "resources/assets/app.ico",
+      "uninstallerIcon": "resources/assets/app.ico"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "bindings": "^1.5.0",
+    "electron-store": "^8.1.0",
+    "exceljs": "4.4.0",
+    "file-uri-to-path": "^1.0.0",
+    "focus-trap-react": "^11.0.4",
+    "jimp": "0.22.12",
+    "lucide-react": "^0.545.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^6.30.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-slug": "^8.0.0",
+    "xlsx": "^0.18.5",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "38.2.1",
+    "electron-builder": "^26.0.12",
+    "prebuild-install": "^7.1.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "wait-on": "^7.2.0"
+  }
+}

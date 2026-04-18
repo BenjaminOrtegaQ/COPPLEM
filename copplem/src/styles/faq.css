@@ -1,0 +1,135 @@
+.faq-wrap{
+  padding:28px;
+  max-width:1680px;
+  min-height: 606px;
+  margin:0 auto;
+}
+
+.faq-filters {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  margin: 8px 0 12px;
+  flex-wrap: wrap;
+}
+
+.faq-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  flex: 1 1 280px;
+}
+.faq-search input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  background: transparent;
+}
+
+.faq-category select {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-width: 160px;
+}
+
+.faq-list { display: grid; gap: 6px; }
+
+.qa {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color .2s;
+}
+.qa.open { border-color: #d1d5db; }
+
+.qa-q {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.qa-toggle {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.qa .chev {
+  transition: transform .2s;
+}
+.qa.open .chev {
+  transform: rotate(180deg);
+}
+
+.qa .badge {
+  margin-left: auto;
+  font-size: 12px;
+  color: #91481a;
+  background: #ee85444d;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.qa .linkcopy {
+  margin-right: 8px;
+}
+
+.qa-a {
+  padding: 0 14px 12px 38px;
+}
+
+mark {
+  background: #fef08a;
+  padding: 0 2px;
+}
+
+
+.faq-wrap{
+  padding:28px;
+  max-width:1680px;
+  margin:0 auto;
+  position: relative;
+  isolation: isolate;   
+}
+
+
+.card{
+  position: relative;
+  z-index: 1;
+}
+
+
+.faq-mascot{
+  position: absolute;
+  right: -14px; bottom: -278px;
+  height: 250px; width: auto;
+  pointer-events: none;
+  z-index: -1;     
+}
+
+.qa-toggle {color: #D07A43; font-weight: bold;}
+
+.qa-toggle {color: black; font-weight: bold;}
+
+.chev {color: #D07A43}
+
+.ghost {background-color: #D07A43; border: none; color: white; font-weight: 550;}
+
+.ghost:hover{ background-color: #D46012;}
+
+.ph-actions .ghost {
+  display: flex;
+  align-items: center; 
+  padding: 11px 14px;
+}

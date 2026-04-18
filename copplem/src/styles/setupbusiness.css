@@ -1,0 +1,113 @@
+
+
+
+:root{
+  --center-offset: 500px;   
+  --primary: #ea6a21;
+  --primary-700: #d46012;
+  --setup-max: 860px;
+}
+
+
+.data-wrap.setup{
+  
+  position: relative;
+}
+
+
+.data-wrap.setup .data-page-header{
+  max-width: var(--setup-max);
+  margin: 0 auto 16px;
+}
+
+
+.data-wrap.setup .data-grid{
+  max-width: var(--setup-max);
+  margin: 0 auto;
+  grid-template-columns: 1fr;  
+  gap: 16px;                   
+}
+
+
+.data-wrap.setup .right-col{
+  display: none !important;
+}
+
+
+.data-wrap.setup .left-col{
+  width: 100%;
+}
+
+
+.data-wrap.setup .ghost-back{
+  position: absolute;      
+  top: 12px;
+  left: 12px;              
+}
+
+
+@media (max-width: 640px){
+  :root{ --setup-max: 100%; }
+  .data-wrap.setup .ghost-back{
+    position: sticky; top: 12px; 
+  }
+}
+
+
+.data-wrap.setup .setup-top{
+  position: sticky;
+  top: 12px;
+  z-index: 10;
+
+  
+  width: 100vw;                          
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
+
+  
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    max-content
+    calc(2 * var(--center-offset))   
+    max-content
+    minmax(0, 1fr);
+  align-items: center;
+
+  
+  padding: 0 clamp(16px, 3vw, 28px);
+  margin-bottom: 24px;
+}
+
+
+.data-wrap.setup .back-btn{
+  grid-column: 2;
+  justify-self: end;
+  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff; color: #111; line-height: 1; cursor: pointer;
+}
+.data-wrap.setup .back-btn:hover{ background: var(--hoverwhitebtns); }
+.data-wrap.setup .back-btn:focus-visible{ outline: none; box-shadow: 0 0 0 3px var(--ring); }
+
+
+.data-wrap.setup .login-btn {
+  grid-column: 4;
+  justify-self: start;
+  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  background: var(--primary); color:#fff; line-height:1; cursor:pointer;
+}
+.data-wrap.setup .login-btn:hover, .btn:hover{
+  background: var(--primary-700);
+  border-color: var(--primary-700);
+  color: #fff;
+}
+.data-wrap.setup .login-btn:focus-visible{ outline: none; box-shadow: 0 0 0 3px var(--ring); }

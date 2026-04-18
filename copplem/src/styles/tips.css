@@ -1,0 +1,205 @@
+
+.tips-tray.fx{
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 60;
+  pointer-events: none;            
+}
+
+
+.tips-tray.fx .tt-card{
+  --w-open: clamp(280px, 300vw, 430px);   
+  --h-open: clamp(150px, 28vh, 230px);   
+
+  position: relative;
+  width: var(--w-open);
+  min-height: var(--h-open);
+  max-width: min(92vw, var(--w-open));
+
+  background: #fff7f1;
+  border: 1px solid #f6d9c7;
+  border-radius: 14px 30px 30px 14px;
+  box-shadow: 0 4px 18px rgba(234,106,33,.05);
+
+  
+  padding: 14px 14px 84px 14px;
+  box-sizing: border-box;
+
+  pointer-events: auto;
+  transform-origin: right bottom;        
+  transition:
+    width .28s ease,
+    min-height .28s ease,
+    padding .28s ease,
+    background .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.tips-tray.fx[data-open="0"] .tt-card{
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  width: auto;
+  min-height: 0;
+}
+
+
+.tips-tray.fx .tt-fab{
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  top: auto;                          
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: none;
+  pointer-events: auto;               
+}
+.tips-tray.fx[data-open="0"] .tt-fab{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.tips-tray.fx .tt-fab .tt-mascot{
+  width: 68px;
+  height: 68px;
+  display: block;
+}
+
+
+.tips-tray.fx .tt-content{
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.tips-tray.fx[data-open="0"] .tt-content{ display: none; }
+
+.tips-tray.fx .tt-icon{
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border-radius: 7px;
+  background: #ffe8da; color: #b6430d;
+  margin-top: 2px;
+}
+
+.tips-tray.fx .tt-body{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 6px;
+  min-height: 100px;
+}
+.tips-tray.fx .tt-title{ font-weight: 600; }
+
+.tips-tray.fx .tt-text{
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.25;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.tips-tray.fx .tt-actions{ margin-top: 2px; }
+.tips-tray.fx .tt-link{
+  border: 0; background: transparent; padding: 0;
+  color: #ea6a21; cursor: pointer;
+}
+.tips-tray.fx .tt-link:hover{ text-decoration: underline; }
+
+
+.tips-tray.fx .tt-mascot-btn{
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  top: auto;                          
+  width: 96px;
+  height: 116px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.tips-tray.fx .tt-mascot.in-card{
+  height: 116px;
+  width: auto;
+  display: block;
+  user-select: none;
+}
+.tips-tray.fx .tt-mascot-btn:hover .tt-mascot{
+  transform: translateY(-2px);
+  transition: transform .2s ease;
+}
+
+
+.tips-tray.fx[data-open="1"] .tt-card{
+  padding-bottom: 84px;
+}
+
+
+@media (max-width: 640px){
+  .tips-tray.fx{ right: 12px; bottom: 12px; }
+  .tips-tray.fx .tt-card{ --w-open: min(92vw, 360px); }
+}
+
+
+.tips-tray.fx .tt-card{
+  
+  padding: 14px 92px 84px 14px;   
+}
+
+
+.tips-tray.fx .tt-fab,
+.tips-tray.fx .tt-mascot-btn{
+  right: -6px;
+  bottom: -6px;
+  top: auto;
+}
+
+.tips-tray.fx .tt-body{ margin-right: 1.5px; }
+
+.tips-tray.fx .tt-pages{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.tips-tray.fx .tt-page{
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e6e1db);
+  background: #fff;
+  color: #374151;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.tips-tray.fx .tt-page:hover{
+  background: var(--hoverwhitebtns, #f3f3f3);
+}
+
+.tips-tray.fx .tt-page.active{
+  background: var(--primary, #ea6a21);
+  color: #fff;
+  border-color: var(--primary, #ea6a21);
+  font-weight: 600;
+}
+
+@media (max-width: 400px){
+  .tips-tray.fx .tt-pages{ display: none; }
+}
